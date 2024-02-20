@@ -52,7 +52,9 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "style": "css",
+      "inlineStyle": true,
+      "skipTests": true
     }
   },
   "defaultProject": "adbox",

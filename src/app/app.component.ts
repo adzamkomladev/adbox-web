@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router, RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 import { IStaticMethods } from 'preline/preline';
+
+import { NxWelcomeComponent } from './nx-welcome.component';
+
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
   }
 }
+
+
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule],
   selector: 'adbox-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  template: `<router-outlet></router-outlet>`,
+  styles: ``,
 })
 export class AppComponent implements OnInit {
   title = 'adbox';
+
   constructor(private router: Router) {
   }
 

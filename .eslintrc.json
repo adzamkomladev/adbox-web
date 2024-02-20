@@ -31,6 +31,12 @@
             "prefix": "adbox",
             "style": "kebab-case"
           }
+        ],
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Component", "Layout", "Page", "Form"]
+          }
         ]
       }
     },

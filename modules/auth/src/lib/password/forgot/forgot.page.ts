@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'adbox-auth',
+  selector: 'adbox-forgot',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css',
+  template: `<p>forgot works!</p>`,
+  styles: ``,
 })
-export class AuthComponent {}
+export class ForgotPage {}

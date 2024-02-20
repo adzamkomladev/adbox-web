@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@adbox/auth": ["modules/auth/src/index.ts"]
+      "@adbox/auth": ["modules/auth/src/index.ts"],
+      "@app/*": ["src/app/*"],
+      "@common/*": ["src/app/@common/*"],
+      "@env/*": ["src/environments/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
