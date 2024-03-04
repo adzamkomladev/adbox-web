@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Form } from './models/form.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, RouterLink, FormsModule],
     templateUrl: './login.page.html',
     styles: ``,
 })
