@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@adbox/auth": ["modules/auth/src/index.ts"],
+      "@adbox/shared/data-access": ["modules/shared/data-access/src/index.ts"],
       "@adbox/users": ["modules/users/src/index.ts"],
       "@app/*": ["src/app/*"],
       "@common/*": ["src/app/@common/*"],

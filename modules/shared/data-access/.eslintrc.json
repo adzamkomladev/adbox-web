@@ -1,5 +1,5 @@
 {
-  "extends": ["../../.eslintrc.base.json"],
+  "extends": ["../../../.eslintrc.base.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -23,12 +23,6 @@
             "type": "element",
             "prefix": "adbox",
             "style": "kebab-case"
-          }
-        ],
-        "@angular-eslint/component-class-suffix": [
-          "error",
-          {
-            "suffixes": ["Component", "Layout", "Page", "Form", "Table"]
           }
         ]
       }

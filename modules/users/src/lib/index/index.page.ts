@@ -1,49 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { User } from '@adbox/shared/data-access';
+
+import { UsersTable } from "./tables/users.table";
+
+
 @Component({
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './index.page.html',
   styles: ``,
+  imports: [CommonModule, UsersTable]
 })
 export class IndexPage {
-  users = signal([
-    {
-      name: 'Bright Okoli',
-      email: 'bright@adbox.africa',
-      avatar: 'https://ui-avatars.com/api/?name=Bright%20Okoli',
-      role: {
-        name: 'Admin',
-        branch: 'IT Admin'
-      },
-      status: 'active',
-      createdBy: 'komla@adbox.africa',
-      createdAt: new Date()
-    },
-    {
-      name: 'Bright Okoli',
-      email: 'bright@adbox.africa',
-      avatar: 'https://ui-avatars.com/api/?name=Bright%20Okoli',
-      role: {
-        name: 'Admin',
-        branch: 'IT Admin'
-      },
-      status: 'active',
-      createdBy: 'komla@adbox.africa',
-      createdAt: new Date()
-    },
-    {
-      name: 'Bright Okoli',
-      email: 'bright@adbox.africa',
-      avatar: 'https://ui-avatars.com/api/?name=Bright%20Okoli',
-      role: {
-        name: 'Admin',
-        branch: 'IT Admin'
-      },
-      status: 'active',
-      createdBy: 'komla@adbox.africa',
-      createdAt: new Date()
-    }
-  ])
+  selectedUser = signal<User | null>(null);
+
+  async onSelected(data: User) {
+    this.selectedUser.set(data);
+  }
+
 }
