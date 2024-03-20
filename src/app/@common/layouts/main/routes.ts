@@ -11,5 +11,9 @@ export default [
     {
         path: 'users',
         loadChildren: () => import('@adbox/users').then((m) => m.USERS),
+    },
+    {
+        path: 'kyc',
+        loadChildren: () => import('@adbox/kyc').then((m) => m.KYC),
     }
 ] as Route[];

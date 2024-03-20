@@ -1,0 +1,9 @@
+{
+  "name": "kyc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/kyc/src",
+  "prefix": "adbox",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}
