@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { LandingPage } from './landing/landing.page';
 
 export const appRoutes: Route[] = [
     {
         path: '',
-        component: LandingPage
+        redirectTo: 'auth/login',
+        pathMatch: 'full'
     },
     {
         path: '',
