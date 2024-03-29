@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { User, UsersResponse, UsersService } from '@adbox/shared/data-access';
@@ -15,12 +15,12 @@ import { User, UsersResponse, UsersService } from '@adbox/shared/data-access';
   `,
 })
 export class UsersTable implements OnInit {
-  @Output() selected = new EventEmitter<User>();
-
   private usersService = inject(UsersService);
 
-  data = signal<UsersResponse | null>(null);
+  selected = output<User>();
+  addUser = output<void>();
 
+  data = signal<UsersResponse | null>(null);
   users = computed(() => this.data()?.users || []);
   next = computed(() => this.data()?.page !== this.data()?.totalPages);
   prev = computed(() => this.data()?.page !== 1);
@@ -32,5 +32,9 @@ export class UsersTable implements OnInit {
 
   onSelect(data: User) {
     this.selected.emit(data);
+  }
+
+  onAddUser() {
+    this.addUser.emit();
   }
 }

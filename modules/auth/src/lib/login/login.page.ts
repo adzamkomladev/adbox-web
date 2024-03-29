@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { finalize } from 'rxjs';
+
 import { Form } from './models/form.model';
 
 import { AuthService } from '@adbox/shared/data-access';
-import { finalize, pipe } from 'rxjs';
 
 @Component({
     standalone: true,
@@ -17,6 +18,8 @@ import { finalize, pipe } from 'rxjs';
 export class LoginPage {
     private auth = inject(AuthService);
     private router = inject(Router);
+
+    returnUrl = input<string>();
 
     model: Form = {
         email: '',
@@ -44,7 +47,7 @@ export class LoginPage {
 
                     this.success = true;
 
-                    this.router.navigate(['/users']);
+                    this.router.navigateByUrl(this.returnUrl() || 'users');
                 },
                 error: (e: Error) => {
                     this.success = false;
