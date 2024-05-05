@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { User } from '@adbox/shared/data-access';
+import { KycUser } from '@adbox/shared/data-access';
 
 import { UsersTable } from "./tables/users.table";
 import { UserAction } from './types/page.type';
@@ -14,11 +14,11 @@ import { UserAction } from './types/page.type';
   imports: [CommonModule, UsersTable]
 })
 export class IndexPage {
-  selectedUser = signal<User | null>(null);
+  selectedUser = signal<KycUser | null>(null);
   userAction = signal<UserAction | null>(null);
   isSidebarOpen = signal<boolean>(false);
 
-  async onSelected(data: User) {
+  async onSelected(data: KycUser) {
     this.selectedUser.set(data);
     this.userAction.set('select');
     this.isSidebarOpen.set(true);
