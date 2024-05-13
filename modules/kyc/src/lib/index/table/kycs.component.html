@@ -3,13 +3,15 @@
 >
   <div class="py-3 px-4">
     <div class="relative max-w-xs">
-      <label class="sr-only">Search</label>
+      <label class="sr-only">search</label>
       <input
+      #filter
+      (input)="filterResults(filter.value)"
         type="text"
         name="hs-table-with-pagination-search"
         id="hs-table-with-pagination-search"
         class="py-2 px-3 ps-9 block w-full border-black-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-teal-500 focus:ring-teal-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-black-900 dark:border-black-700 dark:text-black-400 dark:placeholder-black-500 dark:focus:ring-black-600"
-        placeholder="Search for items"
+        placeholder="search name or email"
       />
       <div
         class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3"
@@ -44,7 +46,7 @@
           data-hs-overlay="#hs-vertically-centered-modal"
         >
           <tr
-            *ngFor="let kyc of kycs(); let i = index; let e = even; let o = odd"
+            *ngFor="let kyc of FilteredKycs; let i = index; let e = even; let o = odd"
             (click)="onSelected(kyc)"
             class="odd:bg-black-0 select-none even:bg-black-40 dark:odd:bg-black-900 dark:even:bg-black-800"
           >

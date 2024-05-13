@@ -5,7 +5,7 @@ import { IconComponent, Kyc, KycResponse, KycService } from '@adbox/shared/data-
 @Component({
   selector: 'adbox-kycs-table',
   standalone: true,
-  imports: [CommonModule,IconComponent],
+  imports: [CommonModule, IconComponent],
   templateUrl: './kycs.component.html',
   styles: ``,
 })
@@ -21,6 +21,7 @@ export class KycsComponent implements OnInit {
 
   KycData = signal<KycResponse | null>(null);
   kycs = computed(() => this.KycData()?.kycs || []);
+  FilteredKycs!: Kyc[];
 
   next = computed(() => this.KycData()?.page !== this.KycData()?.totalPages);
   prev = computed(() => this.KycData()?.page !== 1);
@@ -33,7 +34,22 @@ export class KycsComponent implements OnInit {
       this.usersPerPage = res?.data?.size || 10;
       this.totalPages = res?.data?.totalPages || 1;
       this.loading = false;
+          this.FilteredKycs = this.kycs();
     });
+  }
+
+  filterResults(typedText: string) {
+    if (!typedText) {
+      this.FilteredKycs = this.kycs();
+      return;
+    }
+
+    this.FilteredKycs = this.kycs().filter(
+      (kyc) =>
+        (
+         kyc.user.firstName.toLowerCase() + kyc.user.lastName.toLowerCase() +kyc.user.email.toLowerCase()
+        ).includes(typedText.toLowerCase())
+    );
   }
 
   fetchData = () => {
@@ -59,7 +75,7 @@ export class KycsComponent implements OnInit {
     // }
   }
 
-  onSelected(kyc:Kyc){
+  onSelected(kyc: Kyc) {
     this.selectedKYC.emit(kyc);
   }
 }
