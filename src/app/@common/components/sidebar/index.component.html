@@ -1,0 +1,154 @@
+<nav
+  class="flex flex-col flex-wrap w-full p-6 hs-accordion-group"
+  data-hs-accordion-always-open
+>
+  <ul class="space-y-1.5">
+    <li>
+      <a
+        class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+        href="#"
+        routerLink="/"
+               routerLinkActive="bg-black-40"
+
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <adbox-main-icon name="home" />
+
+        Dashboard
+      </a>
+    </li>
+
+    <li class="hs-accordion" id="users-accordion">
+      <button
+        type="button"
+        class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:hover:bg-black-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+      >
+        <adbox-main-icon name="users" />
+
+        Users
+        <adbox-main-icon name="accordion" />
+      </button>
+      <div
+        id="users-accordion-child"
+        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+      >
+        <ul class="pt-2 ps-2">
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              routerLink="/users"
+                     routerLinkActive="bg-black-40"
+
+            >
+              Admin Users
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              href="#"
+            >
+              Publishers
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              href="#"
+            >
+              Subscribers
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="hs-accordion" id="account-accordion">
+      <button
+        type="button"
+        class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:hover:bg-black-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+      >
+        <adbox-main-icon name="payment" />
+        Payments
+
+        <adbox-main-icon name="accordion" />
+      </button>
+
+      <div
+        id="account-accordion-child"
+        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+      >
+        <ul class="pt-2 ps-2">
+          <adbox-sidebar-accordion-subbutton title="Providers" />
+          <adbox-sidebar-accordion-subbutton title="Charges" />
+          <adbox-sidebar-accordion-subbutton title="Settingss" />
+        </ul>
+      </div>
+    </li>
+
+    <li class="hs-accordion" id="projects-accordion">
+      <button
+        type="button"
+        class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:hover:bg-black-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+      >
+        <adbox-main-icon name="campaign" />
+        Campaigns
+
+        <adbox-main-icon name="accordion" />
+      </button>
+
+      <div
+        id="projects-accordion-child"
+        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+      >
+        <ul class="pt-2 ps-2">
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              href="#"
+            >
+              Link 1
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              href="#"
+            >
+              Link 2
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:bg-black-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+              href="#"
+            >
+              Link 3
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <a
+        class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:hover:bg-black-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+        routerLink="/kyc"
+               routerLinkActive="bg-black-40"
+
+      >
+        <adbox-main-icon name="kyc" />
+        KYC
+      </a>
+    </li>
+    <li>
+      <a
+        class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-black-20 dark:hover:bg-black-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+        href="#"
+      >
+        <adbox-main-icon name="setting" />
+        Settings
+      </a>
+    </li>
+  </ul>
+</nav>

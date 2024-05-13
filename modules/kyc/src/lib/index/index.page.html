@@ -1,2 +1,8 @@
-<p>index works!</p>
-<adbox-kyc-table/>
+<div class="flex flex-col">
+  <div class="p-1.5 min-w-full inline-block align-middle">
+    <adbox-kycs-table (selectedKYC)="changeSelectedKYC($event)" />
+  </div>
+  <adbox-show [selectedKycDetails]="selectedKycDetails()" />
+
+  <adbox-icon name="docs" />
+</div>

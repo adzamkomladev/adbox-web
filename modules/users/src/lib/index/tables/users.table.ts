@@ -78,4 +78,6 @@ export class UsersTable implements OnInit {
   onAddUser() {
     this.addUser.emit();
   }
+
+  
 }

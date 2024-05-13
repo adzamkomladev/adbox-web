@@ -3,14 +3,14 @@ export interface KycRequest {
   size?: number;
 }
 
-export interface KycResponse {
+export interface ApiResponse {
   status: number;
   success: boolean;
   message: string;
-  data: KycData;
+  data: KycResponse;
 }
 
-export interface KycData {
+export interface KycResponse {
   kycs: Kyc[];
   total: number;
   page: number;

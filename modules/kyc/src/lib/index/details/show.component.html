@@ -1,0 +1,185 @@
+<div
+  id="hs-vertically-centered-modal"
+  class="hs-overlay hidden overflow-clip size-full backdrop-blur-sm text-base text-black-800 fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none"
+>
+  <div
+    class="hs-overlay-open:mt-0 hs-overlay-open:scale-100 relative overflow-clip size-full scale-0 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 -mt-7 opacity-0 ease-out transition-all sm:w-full sm:mx-auto flex items-center justify-center"
+  >
+    <!-- <div class="-z-10">
+      <adbox-bg-net/>
+    </div> -->
+
+    <div
+      class="flex flex-col bg-black-full border-[1px] bg-black-0 border-black-600 shadow-sm rounded-xl pointer-events-auto"
+    >
+      <div
+        class="flex justify-between items-center py-3 px-4 border-b border-black-900"
+      >
+        <h3 class="font-bold uppercase text-black-900 flex">
+          <adbox-icon name="detail" /> kyc details
+        </h3>
+        <button
+          type="button"
+          class="flex justify-center items-center size-7 font-semibold rounded-full border border-transparent disabled:opacity-50 disabled:pointer-events-none"
+          data-hs-overlay="#hs-vertically-centered-modal"
+        >
+          <span class="sr-only">Close</span>
+          <adbox-icon name="close" />
+        </button>
+      </div>
+      <div class="grid grid-cols-12 gap-4 p-4">
+        <!-- TIER 1 PERSONAL DETAILS -->
+        <div
+          class="TIER 1 grid col-span-6 border-b rounded-b-xl border-black-100"
+        >
+          <div class="">
+            <div
+              class="flex justify-between bg-black-40 h-20 items-center py-3 px-4 border-b dark:border-black-600"
+            >
+              <h3 class="font-bold flex">
+                <!-- <span>
+                  {{ selectedKycDetails?.user?.firstName?.charAt(0) }}
+                  {{ selectedKycDetails?.user?.lastName?.charAt(0) }}</span
+                > -->
+                <div class="size-16 overflow-clip rounded-full">
+                  <img [src]="selectedKycDetails?.user?.avatar" />
+                </div>
+              </h3>
+              <span class="flex justify-center items-center">
+                <adbox-icon name="accessibility" />Personal details
+              </span>
+            </div>
+            <div class="p-2">
+              <table class="p-4">
+                <tbody>
+                  <div class="contents">
+                    <tr class=" ">
+                      <td class="text-dim-200" rowspan="2">Name :</td>
+                      <td class="pl-2">
+                        {{ selectedKycDetails?.user?.firstName }}
+                      </td>
+                      <td class="pl-2">
+                        {{ selectedKycDetails?.user?.lastName }}
+                      </td>
+                    </tr>
+                    <tr class="text-black-500 text-xs">
+                      <td class="pl-2">first name</td>
+                      <td class="pl-2">last name</td>
+                    </tr>
+                  </div>
+                  <div class="contents">
+                    <tr class="">
+                      <td class="text-dim-200">DOB :</td>
+                      <td class="pl-2" colspan="2">
+                        {{
+                          selectedKycDetails?.user?.dateOfBirth
+                            | date : 'd MMMM YYYY'
+                        }}
+                      </td>
+                    </tr>
+                    <tr class="text-black-500 text-xs">
+                      <td></td>
+                      <td class="pl-2" colspan="2">DD / MMMM /YYYY</td>
+                    </tr>
+                  </div>
+                  <div class="contents">
+                    <tr class="">
+                      <td class="text-dim-200 capitalize">gender :</td>
+                      <td class="pl-2 uppercas" colspan="2">
+                        {{ selectedKycDetails?.user?.sex }}
+                      </td>
+                    </tr>
+                  </div>
+                  <div class="contents">
+                    <tr class="">
+                      <td class="text-dim-200 capitalize">KYC level :</td>
+                      <td class="pl-2 uppercas" colspan="2">
+                        {{ selectedKycDetails?.level }}
+                      </td>
+                    </tr>
+                  </div>
+                  <div class="contents">
+                    <tr class="">
+                      <td class="text-dim-200 capitalize">Phone :</td>
+                      <td class="pl-2 uppercas" colspan="2">
+                        {{ selectedKycDetails?.user?.phone }}
+                      </td>
+                    </tr>
+                  </div>
+                  <div class="contents">
+                    <tr class="">
+                      <td
+                        class="pl-2 text-center text-s text-black-500"
+                        colspan="3"
+                      >
+                        <span class="flex">
+                          <p class="text-base text-dim-600">
+                            created {{ '@' }}
+                          </p>
+                          {{
+                            selectedKycDetails?.createdAt
+                              | date : 'dd MMMM yyyy'
+                          }}
+                          {{
+                            selectedKycDetails?.createdAt | date : 'h:mm:ss a'
+                          }}
+                        </span>
+                      </td>
+                    </tr>
+                  </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- TIER 2 IDENTITY CARDS  grid grid-cols-subgrid gap-4 col-span-12 row-start-2-->
+        <div class="TIER 2 gap-4 grid grid-cols-12 col-span-12 row-start-2">
+          <div
+            class="col-span-12 grid place-content-center grid-flow-col px-3 bg-black-40 h-20 border-b border-black-100"
+          >
+            <adbox-icon name="id_card" /> <span> Identity Details </span>
+          </div>
+          <div
+            class="col-span-8 relative grid place-content-center row-start-3 h-5 border rounded-b-lg border-black-100 border-t-0"
+          >
+            <p class="absolute -bottom-3 left-[calc(50%_-2rem)] bg-black-0">
+              {{ selectedKycDetails?.identity?.idType }}
+            </p>
+          </div>
+          <div
+            class="col-span-4 row-start-3 h-5 border rounded-b-lg border-black-100 border-t-0"
+          ></div>
+          <div class="col-span-4">
+            <img
+              class="aspect-[11/7] h-40 rounded-xl border border-black-100"
+              [src]="selectedKycDetails?.identity?.front"
+            />
+          </div>
+          <div class="col-span-4">
+            <img
+              class="aspect-[11/7] rounded-xl h-40 border border-black-100"
+              [src]="selectedKycDetails?.identity?.back"
+            />
+          </div>
+          <div class="col-span-4">
+            <img
+              class="aspect-[11/7] rounded-xl h-40 border border-black-100"
+              [src]="selectedKycDetails?.identity?.combined"
+            />
+          </div>
+        </div>
+        <!-- TIER 3 BUSINESS DETAILS -->
+
+        <div
+          class="TIER 3 col-span-6 col-start-7 overflow-clip rounded-b-xl border-b border-black-100"
+        >
+          <div
+            class="w-full grid place-content-center grid-flow-col px-3 bg-black-40 h-20 border-b border-black-100"
+          >
+            <adbox-icon name="work_center" /><span> Business Details </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

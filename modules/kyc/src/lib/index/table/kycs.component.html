@@ -1,0 +1,166 @@
+<div
+  class="border rounded-lg divide-y bg-black-20 divide-black-200 dark:border-black-700 dark:divide-black-700"
+>
+  <div class="py-3 px-4">
+    <div class="relative max-w-xs">
+      <label class="sr-only">Search</label>
+      <input
+        type="text"
+        name="hs-table-with-pagination-search"
+        id="hs-table-with-pagination-search"
+        class="py-2 px-3 ps-9 block w-full border-black-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-teal-500 focus:ring-teal-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-black-900 dark:border-black-700 dark:text-black-400 dark:placeholder-black-500 dark:focus:ring-black-600"
+        placeholder="Search for items"
+      />
+      <div
+        class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3"
+      >
+       <adbox-icon name="search"/>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-hidden">
+    <table class="min-w-full divide-y divide-black-200 dark:divide-black-700">
+      <thead
+        class="bg-black-50 text-black-500 uppercase dark:text-black-400 dark:bg-black-800"
+      >
+        <tr class="">
+          <th scope="col" class="">Avata</th>
+          <th scope="col" class="px-6 py-3 text-start text-xs font-medium">
+            Email
+          </th>
+          <th scope="col" class="px-6 py-3 text-start text-xs font-medium">
+            Name
+          </th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium">Level</th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium">Phone</th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium">Gender</th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium">Created At</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-black-200 dark:divide-black-700">
+        <button
+          type="button"
+          class="contents"
+          data-hs-overlay="#hs-vertically-centered-modal"
+        >
+          <tr
+            *ngFor="let kyc of kycs(); let i = index; let e = even; let o = odd"
+            (click)="onSelected(kyc)"
+            class="odd:bg-black-0 select-none even:bg-black-40 dark:odd:bg-black-900 dark:even:bg-black-800"
+          >
+            <td class="h-10 w-10">
+              <img
+                class="size-[38px] rounded-full"
+                [src]="kyc.user.avatar"
+                alt="Image Description"
+              />
+            </td>
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-700 dark:text-black-400"
+            >
+              {{ kyc?.user?.email }}
+            </td>
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-800 dark:text-black-200"
+            >
+              {{ kyc?.user?.firstName }}
+              {{ kyc?.user?.lastName }}
+            </td>
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-800 dark:text-black-200"
+            >
+              <span
+                class="rounded-full bg-teal-900 py-1 px-2 aspect-square text-xs odd:text-black-0 even:text-black-100 dark:odd:text-teal-300 dark:even:text-teal-300"
+              >
+                {{ kyc?.level }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-800 dark:text-black-200"
+            >
+              {{ kyc?.user?.phone }}
+            </td>
+
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-800 dark:text-black-200"
+            >
+              {{ kyc?.user?.sex }}
+            </td>
+            <td
+              class="px-6 py-2 black-0space-nowrap text-sm text-black-800 dark:text-black-200"
+            >
+              {{ kyc?.user?.createdAt }}
+            </td>
+          </tr>
+        </button>
+      </tbody>
+    </table>
+  </div>
+  <!--    
+      <button
+        type="button"
+        class="min-w-[40px] flex justify-center items-center text-black-800 hover:bg-black-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-black-0 dark:hover:bg-black-0/10"
+        aria-current="page"
+      >
+        1
+      </button> -->
+
+  <div
+    class="grid gap-3 px-6 py-4 border-t border-black-200 md:flex md:justify-between md:items-center dark:border-black-700"
+  >
+    <div>
+      <p class="text-sm text-black-600 dark:text-black-400">
+        <span class="font-semibold text-black-800 dark:text-black-200">
+          {{ KycData()?.page }} </span
+        >of {{ totalPages }} pages
+      </p>
+    </div>
+    <div class="inline-flex gap-x-5">
+      @if(prev()) {
+      <button
+        type="button"
+        (click)="onPrevious()"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-black-800 bg-black-0 border border-black-200 rounded-lg shadow-sm gap-x-2 hover:bg-black-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-black-700 dark:text-black-0 dark:hover:bg-black-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+      >
+        <svg
+          class="flex-shrink-0 size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        Prev
+      </button>
+      } @if(next()) {
+      <button
+        type="button"
+        (click)="onNext()"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-black-800 bg-black-0 border border-black-200 rounded-lg shadow-sm gap-x-2 hover:bg-black-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-black-700 dark:text-black-0 dark:hover:bg-black-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-black-600"
+      >
+        Next
+        <svg
+          class="flex-shrink-0 size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+      }
+    </div>
+  </div>
+</div>
