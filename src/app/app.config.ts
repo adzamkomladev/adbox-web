@@ -5,7 +5,7 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { provideToastr } from 'ngx-toastr';
 
@@ -19,7 +19,7 @@ import { ToastComponent } from './@common/components/toast/toast.component';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, withComponentInputBinding(), withEnabledBlockingInitialNavigation()),
-    provideAnimations(),
+    provideAnimationsAsync(),
     provideToastr({
       toastComponent: ToastComponent
     }),
