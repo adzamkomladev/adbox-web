@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router, RouterModule } from '@angular/router';
 
 import { IStaticMethods } from 'preline/preline';
@@ -20,10 +20,9 @@ declare global {
   styles: ``,
 })
 export class AppComponent implements OnInit {
-  title = 'adbox';
+  private router = inject(Router);
 
-  constructor(private router: Router) {
-  }
+  title = 'adbox';
 
   ngOnInit() {
     this.router.events.subscribe((event: Event) => {
