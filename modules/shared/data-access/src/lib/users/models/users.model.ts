@@ -1,3 +1,5 @@
+import { Role } from "./roles.model";
+
 export interface UsersRequest {
     page?: number;
     size?: number;
@@ -27,11 +29,11 @@ export interface User {
     status: string;
 }
 
-export interface Role {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    description: string;
-    code: string;
+export interface CreateAdminRequest {
+    firstName: string;
+    lastName: string;
+    email: string;
+    roleTitle?: string;
+    avatar?: string;
+    roleId: string;
 }

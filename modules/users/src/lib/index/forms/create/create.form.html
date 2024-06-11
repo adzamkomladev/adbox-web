@@ -1,0 +1,226 @@
+@if(message && !loading && !success) {
+<div class="p-4 mt-2 text-sm text-red-800 bg-red-100 border border-red-200 rounded-lg dark:bg-red-800/10 dark:border-red-900 dark:text-red-500"
+    role="alert">
+    <span class="font-bold">Error!</span> {{ message | titlecase }}
+</div>
+}
+<form class="p-4" #form="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Grid -->
+    <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">
+        <div class="sm:col-span-3">
+            <label class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+                Avatar
+            </label>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-9">
+            <div class="flex items-center gap-5">
+                <img class="inline-block rounded-full size-16 ring-2 ring-white dark:ring-neutral-900"
+                    src="{{ model.avatar || ('https://ui-avatars.com/api/?name='+ model.firstName + '+' +model.lastName) }}"
+                    alt="Image Description">
+                <div class="flex gap-x-2">
+                    <div>
+                        <input [hidden]="true" type="file" class="file-input" (change)="onFileSelected($event)"
+                            #fileUpload>
+                        <button (click)="fileUpload.click()" type="button"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" x2="12" y1="3" y2="15" />
+                            </svg>
+                            Upload photo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-3">
+            <label for="firstName" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+                Full name
+            </label>
+
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-9">
+            <div class="sm:flex">
+                <div>
+                    <div class="relative">
+
+                        <input type="text" #firstName="ngModel" [(ngModel)]="model.firstName" id="firstName"
+                            name="firstName" required maxlength="100" aria-describedby="firstName-error"
+                            class="relative block w-full px-3 py-2 -mt-px text-sm border-gray-200 shadow-sm pe-11 -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                            placeholder="Maria">
+                        <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
+                            <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    @if (firstName.invalid && (firstName.dirty || firstName.touched)) {
+                    <p class="mt-2 text-xs text-red-600 " id="firstName-error">
+                        @if (firstName.errors?.['required']) {
+                        First Name is required.
+                        }
+                        @else if (firstName.errors?.['maxlength']) {
+                        First Name cannot be more that 100 characters.
+                        }
+                        @else if (firstName.errors?.['firstName']) {
+                        This is not a valid First Name.
+                        }
+                    </p>
+                    }
+                </div>
+                <div>
+                    <div class="relative">
+                        <input type="text" #lastName="ngModel" [(ngModel)]="model.lastName" id="lastName"
+                            name="lastName" required maxlength="100" aria-describedby="lastName-error"
+                            class="relative block w-full px-3 py-2 -mt-px text-sm border-gray-200 shadow-sm pe-11 -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                            placeholder="Boone">
+                        <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
+                            <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
+                    <p class="mt-2 text-xs text-red-600 " id="lastName-error">
+                        @if (lastName.errors?.['required']) {
+                        Last Name is required.
+                        }
+                        @else if (lastName.errors?.['maxlength']) {
+                        Last Name cannot be more that 100 characters.
+                        }
+                        @else if (lastName.errors?.['lastName']) {
+                        This is not a valid Last Name.
+                        }
+                    </p>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-3">
+            <label for="email" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+                Email Address
+            </label>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-9">
+            <div class="relative">
+                <input #email="ngModel" [(ngModel)]="model.email" type="email" id="email" name="email" required email
+                    maxlength="100" aria-describedby="email-error"
+                    class="block w-full px-3 py-2 text-sm border-gray-200 rounded-lg shadow-sm pe-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    placeholder="maria@site.com">
+                <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
+                    <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                        aria-hidden="true">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>
+                </div>
+            </div>
+            @if (email.invalid && (email.dirty || email.touched)) {
+            <p class="mt-2 text-xs text-red-600 " id="email-error">
+                @if (email.errors?.['required']) {
+                Email address is required.
+                }
+                @else if (email.errors?.['maxlength']) {
+                Email address cannot be more that 100 characters.
+                }
+                @else if (email.errors?.['email']) {
+                This is not a valid email address.
+                }
+            </p>
+            }
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-3">
+            <label for="roleTitle" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+                Role Title
+            </label>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-9">
+            <div class="relative">
+                <input #roleTitle="ngModel" [(ngModel)]="model.roleTitle" type="text" id="roleTitle" name="roleTitle"
+                    required maxlength="100" aria-describedby="roleTitle-error"
+                    class="block w-full px-3 py-2 text-sm border-gray-200 rounded-lg shadow-sm pe-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    placeholder="Tech Lead">
+                <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
+                    <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                        aria-hidden="true">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>
+                </div>
+            </div>
+            @if (roleTitle.invalid && (roleTitle.dirty || roleTitle.touched)) {
+            <p class="mt-2 text-xs text-red-600 " id="roleTitle-error">
+                @if (roleTitle.errors?.['required']) {
+                Role Title is required.
+                }
+                @else if (roleTitle.errors?.['maxlength']) {
+                Role Title cannot be more that 100 characters.
+                }
+            </p>
+            }
+        </div>
+        <!-- End Col -->
+
+
+        <div class="sm:col-span-3">
+            <label for="role" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+                Role
+            </label>
+        </div>
+        <!-- End Col -->
+
+        <div class="sm:col-span-9">
+            <div class="sm:flex">
+                @for (role of (roles$ | async); track $index) {
+                <label for="role-{{ $index }}"
+                    class="relative flex w-full px-3 py-2 -mt-px text-sm border border-gray-200 shadow-sm -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                    <input type="radio" name="roleId" [(ngModel)]="model.roleId" [value]="role.id"
+                        class="shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                        id="role-{{ $index }}">
+                    <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">{{ role.name }}</span>
+                </label>
+                }
+            </div>
+        </div>
+        <!-- End Col -->
+    </div>
+    <!-- End Grid -->
+
+    <div class="flex justify-end mt-5 gap-x-2">
+        <button [disabled]="loading" type="button"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+            Cancel
+        </button>
+        <button [disabled]="form.invalid || loading" type="submit"
+            class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+            @if (loading) {
+            <span
+                class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+                role="status" aria-label="loading"></span>
+            }
+            Save changes
+        </button>
+    </div>
+</form>

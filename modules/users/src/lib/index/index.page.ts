@@ -2,16 +2,19 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { User } from '@adbox/shared/data-access';
+import { SidebarComponent } from '@adbox/shared/ui';
+
+import { UserAction } from './types/page.type';
 
 import { UsersTable } from "./tables/users.table";
-import { UserAction } from './types/page.type';
+import { CreateForm } from "./forms/create/create.form";
 
 
 @Component({
   standalone: true,
   templateUrl: './index.page.html',
   styles: ``,
-  imports: [CommonModule, UsersTable]
+  imports: [CommonModule, SidebarComponent, UsersTable, CreateForm]
 })
 export class IndexPage {
   selectedUser = signal<User | null>(null);

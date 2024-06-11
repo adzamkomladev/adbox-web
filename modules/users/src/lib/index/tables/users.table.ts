@@ -24,6 +24,8 @@ export class UsersTable implements OnInit {
   users = computed(() => this.data()?.users || []);
   next = computed(() => this.data()?.page !== this.data()?.totalPages);
   prev = computed(() => this.data()?.page !== 1);
+  page = computed(() => this.data()?.page || 1);
+  size = computed(() => this.data()?.size || 10);
 
   ngOnInit(): void {
     this.usersService.findAll({})
@@ -36,5 +38,15 @@ export class UsersTable implements OnInit {
 
   onAddUser() {
     this.addUser.emit();
+  }
+
+  onNext() {
+    this.usersService.findAll({ page: this.page() + 1, size: this.size() }).
+      subscribe(res => this.data.set(res?.data || this.data()));
+  }
+
+  onPrev() {
+    this.usersService.findAll({ page: this.page() - 1, size: this.size() }).
+      subscribe(res => this.data.set(res?.data || this.data()));
   }
 }
