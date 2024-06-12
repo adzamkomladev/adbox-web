@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,14 +11,17 @@ import { CreateFormModel } from '../../models/create.form.model';
 @Component({
   selector: 'adbox-create-user-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './create.form.html',
   styles: ``,
+  imports: [CommonModule, FormsModule]
 })
 export class CreateForm {
   private assetsService = inject(AssetsService);
   private rolesService = inject(RolesService);
   private usersService = inject(UsersService);
+
+  created = output<void>();
+  close = output<void>();
 
   roles$ = this.rolesService.findAll()
     .pipe(
@@ -51,7 +54,7 @@ export class CreateForm {
     this.usersService.createAdmin({ ...this.model })
       .pipe(finalize(() => this.loading = false))
       .subscribe({
-        next: (res) => {
+        next: async (res) => {
           this.message = res.message;
 
           if (!res.success) {
@@ -60,8 +63,7 @@ export class CreateForm {
           }
 
           this.success = true;
-
-          this.resetForm();
+          this.created.emit();
         },
         error: (e: Error) => {
           this.success = false;
@@ -70,12 +72,7 @@ export class CreateForm {
       });
   }
 
-  resetForm() {
-    this.model = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      roleId: '',
-    };
+  onClose() {
+    this.close.emit();
   }
 }

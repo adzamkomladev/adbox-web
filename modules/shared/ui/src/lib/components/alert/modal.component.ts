@@ -2,13 +2,13 @@ import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'adbox-sidebar',
+  selector: 'adbox-alert-modal',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './sidebar.component.html',
+  templateUrl: './modal.component.html',
   styles: ``,
 })
-export class SidebarComponent {
+export class ModalComponent {
   id = input.required<string>();
   title = input.required<string>();
 

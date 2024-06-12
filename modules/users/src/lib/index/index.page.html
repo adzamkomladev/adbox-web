@@ -11,8 +11,11 @@
     <!-- End Card -->
 </div>
 <!-- End Table Section -->
-<adbox-sidebar id="overlay-create-user" title="Create Admin User" (close)="onClose()">
+<adbox-sidebar [id]="sidebarId" title="Create Admin User" (closed)="onClosed()">
     @if(userAction() === 'create') {
-    <adbox-create-user-form />
+    <adbox-create-user-form (created)="onCreated()" (close)="onClosed()" />
     }
 </adbox-sidebar>
+<adbox-alert-modal [id]="alertModalId" [title]="alertTitle()" (closed)="onModalAlertClosed()">
+    <p class="text-gray-500 dark:text-neutral-500">{{ alertMessage() }}</p>
+</adbox-alert-modal>
