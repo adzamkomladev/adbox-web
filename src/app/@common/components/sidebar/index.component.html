@@ -1,0 +1,55 @@
+<div
+  id="application-sidebar"
+  class="hs-overlay hs-overlay-open:translate-x-0 shadow-sm -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-black-0 border-e border-black-60 border- pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800 dark:border-gray-700"
+>
+  <div class="px-6">
+    <adbox-main-icon name="logo" />
+  </div>
+  <nav
+    class="flex flex-col flex-wrap w-full hs-accordion-group"
+    data-hs-accordion-always-open
+  >
+    <ul
+      class="space-y-1.5 p-6 text-black-500 flex flex-col gap-1 dark:text-black-20 font-semibold dark:hover:text-slate-300 capitalize"
+    >
+      <adbox-sidebar-link-button
+        label="dashboard"
+        routeTo="/"
+        isActiveStyle=""
+        iconName="home"
+      />
+
+      <adbox-sidebar-accordion-button label="users" accordionIconName="users">
+        <adbox-sidebar-link-button
+          label="admin users"
+          iconName="user_admin"
+          routeTo="/users"
+        />
+        <adbox-sidebar-link-button label="team" iconName="team" routeTo="" />
+      </adbox-sidebar-accordion-button>
+
+      <adbox-sidebar-accordion-button label="payment" accordionIconName="payment">
+        <adbox-sidebar-link-button label="wallet" iconName="wallet" />
+      </adbox-sidebar-accordion-button>
+
+      <adbox-sidebar-link-button
+        label="campaigns"
+        routeTo=""
+        iconName="campaign"
+      />
+
+      <adbox-sidebar-accordion-button label="KYC" accordionIconName="kyc">
+        <adbox-sidebar-link-button label="kyc admin" routeTo="/kyc" />
+      </adbox-sidebar-accordion-button>
+    </ul>
+    <ul
+      class="space-y-1.5 border-t border-black-60 p-6 text-black-500 flex flex-col gap-1 dark:text-slate-400 font-semibold dark:hover:text-slate-300 capitalize"
+    >
+      <adbox-sidebar-link-button label="setting">
+        <span icon class="rounded-md bg-black-900 text-black-0 p-1"
+          ><adbox-main-icon name="settings"
+        /></span>
+      </adbox-sidebar-link-button>
+    </ul>
+  </nav>
+</div>

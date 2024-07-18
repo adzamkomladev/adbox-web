@@ -1,35 +1,94 @@
-import { Component, OnInit, computed, inject, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  computed,
+  inject,
+  output,
+  signal,
+} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { User, UsersResponse, UsersService } from '@adbox/shared/data-access';
+import {
+  User,
+  UsersResponse,
+  UsersService,
+} from '@adbox/shared/data-access';
+import {TableHeadComponent} from './rows/data/head.component';
 
 @Component({
-  selector: 'adbox-users-table',
+  selector:
+    'adbox-users-table',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './users.table.html',
+  imports: [
+    CommonModule,
+    TableHeadComponent,
+  ],
+  templateUrl:
+    './users.table.html',
   styles: `
     :host {
-      display: block;
-    }
+      display:block;}
   `,
 })
-export class UsersTable implements OnInit {
-  private usersService = inject(UsersService);
+export class UsersTable
+  implements OnInit
+{
+  private usersService =
+    inject(UsersService);
 
   selected = output<User>();
   addUser = output<void>();
 
-  data = signal<UsersResponse | null>(null);
-  users = computed(() => this.data()?.users || []);
-  next = computed(() => this.data()?.page !== this.data()?.totalPages);
-  prev = computed(() => this.data()?.page !== 1);
-  page = computed(() => this.data()?.page || 1);
-  size = computed(() => this.data()?.size || 10);
+  data =
+    signal<UsersResponse | null>(
+      null
+    );
+
+    paginationPages = signal<number[]>([]);
+
+  users = computed(
+    () =>
+      this.data()?.users || []
+  );
+
+  next = computed(
+    () =>
+      this.data()?.page !==
+      this.data()?.totalPages
+  );
+  prev = computed(
+    () =>
+      this.data()?.page !== 1
+  );
+  page = computed(
+    () =>
+      this.data()?.page || 1
+  );
+  size = computed(
+    () =>
+      this.data()?.size || 20
+  );
+
+  paginationsPages = computed(() => {
+    const totalPages = this.data()?.totalPages || 1; 
+    const pages: number[] = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+    return pages;
+  });
+
 
   ngOnInit(): void {
-    this.usersService.findAll({})
-      .subscribe(res => this.data.set(res?.data || null));
+    this.usersService
+      .findAll({})
+      .subscribe((res) =>
+        this.data.set(
+          res?.data || null
+        )
+      );
+
+     
   }
 
   onSelect(data: User) {
@@ -40,13 +99,31 @@ export class UsersTable implements OnInit {
     this.addUser.emit();
   }
 
+  onFetch(page:number) {
+    this.usersService
+      .findAll({
+        page: page,
+        size: this.size(),
+      })
+      .subscribe((res) =>
+        this.data.set(
+          res?.data ||
+            this.data()
+        )
+      );
+  }
+
+
   onNext() {
-    this.usersService.findAll({ page: this.page() + 1, size: this.size() }).
-      subscribe(res => this.data.set(res?.data || this.data()));
+    this.onFetch(this.page() + 1)
   }
 
   onPrev() {
-    this.usersService.findAll({ page: this.page() - 1, size: this.size() }).
-      subscribe(res => this.data.set(res?.data || this.data()));
+   this.onFetch(this.page() - 1)
   }
+
+  onGotoPage(page:number) {
+    this.onFetch(page)
+  }
+    
 }
