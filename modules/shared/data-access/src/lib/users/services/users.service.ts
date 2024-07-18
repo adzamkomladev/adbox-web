@@ -15,6 +15,10 @@ import { CreateAdminRequest, UsersRequest, UsersResponse } from '../models';
 export class UsersService {
   private http = inject(HttpClient);
 
+  findOneById(id: string) {
+    // TODO: Implement this
+  }
+
   findAll(payload: UsersRequest) {
     return this.http.get<Response<UsersResponse>>(
       `${env.baseUrl}/admin/users`,
@@ -47,5 +51,9 @@ export class UsersService {
           throw e;
         })
       );
+  }
+
+  updateUserStatus() {
+    // TODO: Implement this
   }
 }

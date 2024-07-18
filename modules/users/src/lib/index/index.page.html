@@ -11,9 +11,12 @@
     <!-- End Card -->
 </div>
 <!-- End Table Section -->
-<adbox-sidebar [id]="sidebarId" title="Create Admin User" (closed)="onClosed()">
+<adbox-sidebar [id]="sidebarId" [title]="sidebarTitle()" (closed)="onClosed()">
     @if(userAction() === 'create') {
     <adbox-create-user-form (created)="onCreated()" (close)="onClosed()" />
+    }
+    @if(userAction() === 'select') {
+    <adbox-user-details [user]="selectedUser()!" />
     }
 </adbox-sidebar>
 <adbox-alert-modal [id]="alertModalId" [title]="alertTitle()" (closed)="onModalAlertClosed()">
