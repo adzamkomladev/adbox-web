@@ -21,10 +21,12 @@ export interface User {
     wallet: null;
     campaign: null;
     name: string;
+    firstName?: string;
+    lastName?: string;
     avatar: string;
     email: string;
     dateOfBirth: null;
-    sex: null;
+    sex?: 'male' | 'female';
     roleTitle: string;
     status: string;
 }
@@ -37,3 +39,6 @@ export interface CreateAdminRequest {
     avatar?: string;
     roleId: string;
 }
+
+// TODO: Create find one by id interfaces for request and response and details
+// TODO: Create update user status interfaces for request and response

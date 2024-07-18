@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { User } from '@adbox/shared/data-access';
@@ -8,13 +8,14 @@ import { UserAction } from './types/page.type';
 
 import { UsersTable } from "./tables/users.table";
 import { CreateForm } from "./forms/create/create.form";
+import { DetailsComponent } from "./components/details.component";
 
 
 @Component({
   standalone: true,
   templateUrl: './index.page.html',
   styles: ``,
-  imports: [CommonModule, SidebarComponent, UsersTable, CreateForm, ModalComponent]
+  imports: [CommonModule, SidebarComponent, UsersTable, CreateForm, ModalComponent, DetailsComponent]
 })
 export class IndexPage {
   private sidebarService = inject(SidebarService);
@@ -26,15 +27,19 @@ export class IndexPage {
   selectedUser = signal<User | null>(null);
   userAction = signal<UserAction | null>(null);
   isSidebarOpen = signal<boolean>(false);
+  sidebarTitle = computed(() => this.userAction() === 'create' ? 'Create Admin User' : 'Admin User Details');
   alertTitle = signal('');
   alertMessage = signal('');
 
   async onSelected(data: User) {
+    this.onClosed();
     this.selectedUser.set(data);
     this.userAction.set('select');
+    this.sidebarService.open(this.sidebarId);
   }
 
   async onAdd() {
+    this.onClosed();
     this.userAction.set('create');
   }
 

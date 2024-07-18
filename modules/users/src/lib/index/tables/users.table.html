@@ -118,8 +118,9 @@
                 </td>
                 <td class="h-px w-72 whitespace-nowrap">
                     <div class="px-6 py-3">
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{
-                            user.role.name }}</span>
+                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                            {{ user.role.name }}
+                        </span>
                         <span class="block text-sm text-gray-500"> {{ user.roleTitle }} </span>
                     </div>
                 </td>
@@ -153,7 +154,7 @@
                 </td>
                 <td class="size-px whitespace-nowrap">
                     <div class="px-6 py-1.5">
-                        <a (click)="onSelect(user)"
+                        <a data-hs-overlay="#hs-overlay-create-user" (click)="onSelect(user)"
                             class="inline-flex items-center text-sm font-medium text-blue-600 cursor-pointer gap-x-1 decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                             Edit
                         </a>

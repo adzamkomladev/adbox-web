@@ -18,7 +18,7 @@ export class SidebarService {
 
   open(id: string) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const element = this.document.getElementById(id)!;
+    const element = this.document.getElementById(`hs-${id}`)!;
     HSOverlay.open(element);
   }
 }
