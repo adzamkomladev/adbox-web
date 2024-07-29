@@ -1,10 +1,59 @@
-<p>Name: {{ user().firstName + ' ' + user().lastName }}</p>
-<p>Email: {{ user().email }}</p>
-<p>Role Title: {{ user().roleTitle }}</p>
-<p>Role: {{ user().role.name }}</p>
-<p>Avatar: {{ user().avatar }}</p>
-<p>Status: {{ user().status }}</p>
-<p>Created At: {{ user().createdAt | date }}</p>
-<adbox-user-status-update-form [status]="user().status" />
+<div>
+  <div class="shadow bg-white max-w-2xl w-128 p-10 pb-2">
+    <div class="grid justify-center">
+      <img
+        [src]="user().avatar"
+        loading="lazy"
+        class="h-24 bg-black-40 aspect-square rounded-full"
+      />
+    </div>
+    <div class="grid grid-flow-col py-4 gap-5 text-slate-800">
+      <div>
+        <p class="">Names : {{ user().firstName + ' ' + user().lastName }}</p>
+        <p>Email : {{ user().email }}</p>
+        <p>Role Title : {{ user().roleTitle }}</p>
+      </div>
+      <div>
+        <div class="flex"><p class="font-medium">Role :  </p> {{ user().role.name }}</div>
+        <div class="flex"><p class="font-medium">Status :  </p> {{ user().status }}</div>
+        <div class="flex"><p class="font-medium">Gender :  </p> {{ user().sex }}</div>
+      </div>
+    </div>
 
-<!-- TODO: Clean up UI -->
+    <form (ngSubmit)="onSubmit(user().id)" class="">
+      <div class="">
+        <adbox-user-status-update-form class="" [status]="user().status" />
+      </div>
+      <div class="flex justify-between mt-5 gap-x-2 select-none">
+        <button
+          (click)="onClose()"
+          [disabled]="loading"
+          type="button"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
+        >
+          Cancel
+        </button>
+
+        <!-- [disabled]="form.invalid || loading" -->
+
+        <button
+          type="submit"
+          class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+        >
+          @if (loading) {
+          <span
+            class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+            role="status"
+            aria-label="loading"
+          ></span>
+          } Save changes
+        </button>
+      </div>
+    </form>
+    <div>
+
+      <div class="flex p-4 justify-center text-sm italic opacity-50">Created &#64; {{ user().createdAt | date }}</div>
+
+    </div>
+  </div>
+</div>

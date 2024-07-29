@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,10 +11,16 @@ import { CommonModule } from '@angular/common';
 export class SidebarComponent {
   id = input.required<string>();
   title = input.required<string>();
+  extraStyles=signal<string>('')
+  extraStyle=input<string>('bg-white');
 
   closed = output<void>();
 
   onClose() {
     this.closed.emit();
+  }
+
+  resetStyles(){
+    this.extraStyles.set(this.extraStyles())
   }
 }

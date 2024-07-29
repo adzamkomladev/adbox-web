@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
     <div class="">
          @if(data()){
       {{ data() }}
+      }@else {
+        loading ..
       }
       <ng-content class=""></ng-content>
     </div>

@@ -1,13 +1,12 @@
-import { Component, Input, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, Input, input} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'adbox-main-icon',
   standalone: true,
   imports: [CommonModule],
   template: `
-    @switch (name()){
-       @case('accordion'){
+    @switch (name()){ @case('accordion'){
     <svg
       class="rotate-180 hs-accordion-active:rotate-0 transition-all ms-auto size-4"
       xmlns="http://www.w3.org/2000/svg"
@@ -56,8 +55,9 @@ import { CommonModule } from '@angular/common';
     >
       <path
         d="M360-160v-240h240v240H360Zm80-80h80v-80h-80v80ZM88-440l-48-64 440-336 160 122v-82h120v174l160 122-48 64-392-299L88-440Zm392 160Z"
-      /></svg
-    >} @case('paid'){
+      />
+    </svg>
+    } @case('paid'){
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 -960 960 960"
@@ -294,12 +294,13 @@ import { CommonModule } from '@angular/common';
     >
       <path
         d="M200-200v-560 560Zm0 80q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v100h-80v-100H200v560h560v-100h80v100q0 33-23.5 56.5T760-120H200Zm320-160q-33 0-56.5-23.5T440-360v-240q0-33 23.5-56.5T520-680h280q33 0 56.5 23.5T880-600v240q0 33-23.5 56.5T800-280H520Zm280-80v-240H520v240h280Zm-160-60q25 0 42.5-17.5T700-480q0-25-17.5-42.5T640-540q-25 0-42.5 17.5T580-480q0 25 17.5 42.5T640-420Z"
-      /> 
+      />
     </svg>
     } }
   `,
   styles: ``,
 })
 export class MainIconComponent {
-  name = input<string>();
+  name = input<string
+  >();
 }

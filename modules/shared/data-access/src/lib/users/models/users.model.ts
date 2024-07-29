@@ -20,7 +20,6 @@ export interface User {
     role: Role;
     wallet: null;
     campaign: null;
-    name: string;
     firstName?: string;
     lastName?: string;
     avatar: string;

@@ -1,11 +1,8 @@
 import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { finalize, map, tap } from 'rxjs';
-
 import { AssetsService, RolesService, UsersService } from '@adbox/shared/data-access';
-
 import { CreateFormModel } from '../../models/create.form.model';
 
 @Component({
@@ -15,6 +12,7 @@ import { CreateFormModel } from '../../models/create.form.model';
   styles: ``,
   imports: [CommonModule, FormsModule]
 })
+
 export class CreateForm {
   private assetsService = inject(AssetsService);
   private rolesService = inject(RolesService);
@@ -29,6 +27,8 @@ export class CreateForm {
       map(data => data?.filter(r => ['ADMIN', 'SUPER_ADMIN'].includes(r.code))),
       tap(data => this.model.roleId = data?.[0]?.id || this.model.roleId),
     );
+
+    
   model: CreateFormModel = {
     firstName: '',
     lastName: '',

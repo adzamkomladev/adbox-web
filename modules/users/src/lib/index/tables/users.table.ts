@@ -125,5 +125,5 @@ export class UsersTable
   onGotoPage(page:number) {
     this.onFetch(page)
   }
-    
+
 }

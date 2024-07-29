@@ -1,13 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { environment as env } from '@env/environment';
 
 import { Response } from '../../@common';
-import { CreateAdminRequest, UsersRequest, UsersResponse } from '../models';
+import { CreateAdminRequest, Role, UsersRequest, UsersResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class UsersService {
   findOneById(id: string) {
     // TODO: Implement this
   }
+
+  
 
   findAll(payload: UsersRequest) {
     return this.http.get<Response<UsersResponse>>(
@@ -53,7 +55,22 @@ export class UsersService {
       );
   }
 
-  updateUserStatus() {
+  updateUserStatus(id: string, payload: string): Observable<UsersResponse> {
+    return this.http.patch<UsersResponse>(`${env.baseUrl}/admin/users/${id}/status/update`, payload)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error(error);
+  
+          // Handle specific error cases based on status code or error message
+          if (error.status === 400) {
+            return throwError(() => new Error('Invalid payload'));
+          } else if (error.status === 404) {
+            return throwError(() => new Error('User not found'));
+          } else {
+            return throwError(() => new Error('An unexpected error occurred'));
+          }
+        })
+      );
     // TODO: Implement this
   }
 }
