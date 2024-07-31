@@ -7,7 +7,7 @@ import { catchError, throwError } from 'rxjs';
 import { environment as env } from '@env/environment';
 
 import { Response } from '../../@common';
-import { CreateAdminRequest, UsersRequest, UsersResponse } from '../models';
+import { CreateAdminRequest, UpdateStatusRequest, UsersRequest, UsersResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +53,17 @@ export class UsersService {
       );
   }
 
-  updateUserStatus() {
-    // TODO: Implement this
+  updateStatus(id: string, payload: UpdateStatusRequest) {
+    return this.http.patch<Response<void>>(`${env.baseUrl}/admin/users/${id}/status/update`, payload)
+      .pipe(
+        catchError(e => {
+          console.log(e, 'this iserr')
+          if (!(e instanceof Error)) {
+            return throwError(() => new Error(e.error.message));
+          }
+
+          throw e;
+        })
+      );
   }
 }

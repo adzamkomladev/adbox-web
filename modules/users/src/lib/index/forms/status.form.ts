@@ -1,6 +1,7 @@
-import { Component, input, model } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Status, UsersService } from '@adbox/shared/data-access';
 
 @Component({
   selector: 'adbox-user-status-update-form',
@@ -16,12 +17,16 @@ import { FormsModule } from '@angular/forms';
   styles: ``,
 })
 export class StatusForm {
-  status = input<string>();
+  private usersService = inject(UsersService);
+  status = input.required<string>();
+  id = input.required<string>();
 
   statuses = ['active', 'inactive'];
 
   onChangeStatus(data: string) {
     console.log(data, 'on status changed');
+
+    this.usersService.updateStatus(this.id(), { status: data as Status }).subscribe();
     // TODO: Make call to api to change status
   }
 

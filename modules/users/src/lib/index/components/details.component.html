@@ -5,6 +5,6 @@
 <p>Avatar: {{ user().avatar }}</p>
 <p>Status: {{ user().status }}</p>
 <p>Created At: {{ user().createdAt | date }}</p>
-<adbox-user-status-update-form [status]="user().status" />
+<adbox-user-status-update-form [id]="user().id" [status]="user().status" />
 
 <!-- TODO: Clean up UI -->

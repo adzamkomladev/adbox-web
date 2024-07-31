@@ -1,3 +1,4 @@
+import { Status } from "../../@common";
 import { Role } from "./roles.model";
 
 export interface UsersRequest {
@@ -42,3 +43,7 @@ export interface CreateAdminRequest {
 
 // TODO: Create find one by id interfaces for request and response and details
 // TODO: Create update user status interfaces for request and response
+
+export interface UpdateStatusRequest {
+    status: Status;
+}
