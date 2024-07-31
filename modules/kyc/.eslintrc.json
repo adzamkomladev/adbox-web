@@ -28,7 +28,15 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": ["Component", "Layout", "Page", "Form", "Table"]
+            "suffixes": [
+              "Component",
+              "Layout",
+              "Page",
+              "Form",
+              "Table",
+              "Card",
+              "Filter"
+            ]
           }
         ]
       }

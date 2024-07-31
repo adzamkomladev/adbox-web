@@ -4,6 +4,6 @@ export const KYC = [
     {
         path: '',
         loadComponent: () =>
-            import('./index/index.page').then((m) => m.IndexPage),
+            import('./home/home.page').then((m) => m.HomePage),
     }
 ] as Route[];
