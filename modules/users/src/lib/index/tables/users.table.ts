@@ -87,7 +87,6 @@ export class UsersTable
           res?.data || null
         )
       );
-
      
   }
 

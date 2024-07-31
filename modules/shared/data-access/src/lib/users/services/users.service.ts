@@ -55,17 +55,16 @@ export class UsersService {
       );
   }
 
-  updateUserStatus(id: string, payload: string): Observable<UsersResponse> {
-    return this.http.patch<UsersResponse>(`${env.baseUrl}/admin/users/${id}/status/update`, payload)
+  updateUserStatus(id: string, status: string): Observable<UsersResponse> {
+    return this.http.patch<UsersResponse>(`${env.baseUrl}/admin/users/${id}/status/update`, {status})
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error(error);
   
-          // Handle specific error cases based on status code or error message
           if (error.status === 400) {
             return throwError(() => new Error('Invalid payload'));
-          } else if (error.status === 404) {
-            return throwError(() => new Error('User not found'));
+          } else if (error.status === 401) {
+            return throwError(() => new Error('unautorized and this they worry me🤦‍♂️'));
           } else {
             return throwError(() => new Error('An unexpected error occurred'));
           }
