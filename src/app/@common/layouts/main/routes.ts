@@ -19,5 +19,11 @@ export default [
         path: 'kyc',
         loadChildren: () => import('@adbox/kyc').then((m) => m.KYC),
         canActivate: [authGuard]
+    },
+
+    {
+        path: 'payments',
+        loadChildren: () => import('@adbox/payments').then((m) => m.PAYMENTS),
+        canActivate: [authGuard]
     }
 ] as Route[];
