@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 
-import { HSOverlay } from 'preline';
+import HSOverlay from '@preline/overlay';
 
 @Injectable({
   providedIn: 'root'
