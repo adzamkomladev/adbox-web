@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
-  templateUrl: './main.layout.html',
-  styles: ``,
+    imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+    templateUrl: './main.layout.html',
+    styles: ``
 })
 export class MainLayout { }

@@ -3,21 +3,17 @@ import { Event, NavigationEnd, Router, RouterModule } from '@angular/router';
 
 import { IStaticMethods } from 'preline/preline';
 
-import { NxWelcomeComponent } from './nx-welcome.component';
-
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
   }
 }
 
-
 @Component({
-  standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'adbox-root',
-  template: `<router-outlet></router-outlet>`,
-  styles: ``,
+    imports: [RouterModule],
+    selector: 'adbox-root',
+    template: `<router-outlet></router-outlet>`,
+    styles: ``
 })
 export class AppComponent implements OnInit {
   private router = inject(Router);

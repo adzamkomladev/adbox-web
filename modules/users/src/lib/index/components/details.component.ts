@@ -4,11 +4,10 @@ import { User } from '@adbox/shared/data-access';
 import { StatusForm } from "../forms/status.form";
 
 @Component({
-  selector: 'adbox-user-details',
-  standalone: true,
-  imports: [CommonModule, StatusForm],
-  templateUrl: './details.component.html',
-  styles: ``,
+    selector: 'adbox-user-details',
+    imports: [CommonModule, StatusForm],
+    templateUrl: './details.component.html',
+    styles: ``
 })
 export class DetailsComponent {
   user = input.required<User>();

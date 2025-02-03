@@ -12,10 +12,9 @@ import {
 import { Toast } from 'ngx-toastr';
 
 @Component({
-  selector: 'adbox-toast',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'adbox-toast',
+    imports: [CommonModule],
+    template: `
   <div [style.display]="state.value === 'inactive' ? 'none' : ''" id="toast-default" class="fixed flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 top-5 right-5" role="alert">
     @switch (toastPackage.toastType) {
       @case ('toast-success') {
@@ -64,41 +63,41 @@ import { Toast } from 'ngx-toastr';
     </button>
   </div>
   `,
-  animations: [
-    trigger('flyInOut', [
-      state('inactive', style({
-        opacity: 0,
-      })),
-      transition('inactive => active', animate('400ms ease-out', keyframes([
-        style({
-          transform: 'translate3d(100%, 0, 0) skewX(-30deg)',
-          opacity: 0,
-        }),
-        style({
-          transform: 'skewX(20deg)',
-          opacity: 1,
-        }),
-        style({
-          transform: 'skewX(-5deg)',
-          opacity: 1,
-        }),
-        style({
-          transform: 'none',
-          opacity: 1,
-        }),
-      ]))),
-      transition('active => removed', animate('400ms ease-out', keyframes([
-        style({
-          opacity: 1,
-        }),
-        style({
-          transform: 'translate3d(100%, 0, 0) skewX(30deg)',
-          opacity: 0,
-        }),
-      ]))),
-    ]),
-  ],
-  preserveWhitespaces: false,
+    animations: [
+        trigger('flyInOut', [
+            state('inactive', style({
+                opacity: 0,
+            })),
+            transition('inactive => active', animate('400ms ease-out', keyframes([
+                style({
+                    transform: 'translate3d(100%, 0, 0) skewX(-30deg)',
+                    opacity: 0,
+                }),
+                style({
+                    transform: 'skewX(20deg)',
+                    opacity: 1,
+                }),
+                style({
+                    transform: 'skewX(-5deg)',
+                    opacity: 1,
+                }),
+                style({
+                    transform: 'none',
+                    opacity: 1,
+                }),
+            ]))),
+            transition('active => removed', animate('400ms ease-out', keyframes([
+                style({
+                    opacity: 1,
+                }),
+                style({
+                    transform: 'translate3d(100%, 0, 0) skewX(30deg)',
+                    opacity: 0,
+                }),
+            ]))),
+        ]),
+    ],
+    preserveWhitespaces: false
 })
 export class ToastComponent extends Toast {
 

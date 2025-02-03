@@ -4,17 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { Status, UsersService } from '@adbox/shared/data-access';
 
 @Component({
-  selector: 'adbox-user-status-update-form',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'adbox-user-status-update-form',
+    imports: [CommonModule, FormsModule],
+    template: `
   <select [ngModel]="status()" (ngModelChange)="onChangeStatus($event)"  class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
     @for(status of statuses; track $index;) {
       <option [value]="status" >{{ status | titlecase }}</option>
     }
   </select>
 `,
-  styles: ``,
+    styles: ``
 })
 export class StatusForm {
   private usersService = inject(UsersService);

@@ -12,10 +12,9 @@ import { DetailsComponent } from "./components/details.component";
 
 
 @Component({
-  standalone: true,
-  templateUrl: './index.page.html',
-  styles: ``,
-  imports: [CommonModule, SidebarComponent, UsersTable, CreateForm, ModalComponent, DetailsComponent]
+    templateUrl: './index.page.html',
+    styles: ``,
+    imports: [CommonModule, SidebarComponent, UsersTable, CreateForm, ModalComponent, DetailsComponent]
 })
 export class IndexPage {
   private sidebarService = inject(SidebarService);

@@ -7,11 +7,10 @@ import { FilterService } from '../services/filter.service';
 import { Status } from '../models/filter.model';
 
 @Component({
-  selector: 'adbox-kyc-filter',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './kyc.filter.html',
-  styles: ``,
+    selector: 'adbox-kyc-filter',
+    imports: [CommonModule],
+    templateUrl: './kyc.filter.html',
+    styles: ``
 })
 export class KycFilter implements AfterViewInit {
 

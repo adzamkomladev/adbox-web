@@ -4,10 +4,9 @@ import { StatsCard } from "./cards/stats.card";
 import { KycTable } from "./tables/kyc.table";
 
 @Component({
-  selector: 'adbox-home',
-  standalone: true,
-  imports: [CommonModule, StatsCard, KycTable],
-  templateUrl: './home.page.html',
-  styles: ``,
+    selector: 'adbox-home',
+    imports: [CommonModule, StatsCard, KycTable],
+    templateUrl: './home.page.html',
+    styles: ``
 })
 export class HomePage { }

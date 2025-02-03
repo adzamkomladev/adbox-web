@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
-  template: `
+    imports: [CommonModule, RouterLink, FormsModule],
+    template: `
       <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <div class="p-4 sm:p-7">
           <div class="text-center">
@@ -58,7 +57,7 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
   `,
-  styles: ``,
+    styles: ``
 })
 export class ForgotPage {
   email = '';

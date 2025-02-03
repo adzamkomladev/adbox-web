@@ -10,10 +10,9 @@ import { Form } from './models/form.model';
 import { AuthService } from '@adbox/shared/data-access';
 
 @Component({
-    standalone: true,
     imports: [CommonModule, RouterLink, FormsModule],
     templateUrl: './login.page.html',
-    styles: ``,
+    styles: ``
 })
 export class LoginPage {
     private auth = inject(AuthService);

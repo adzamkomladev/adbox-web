@@ -4,15 +4,14 @@ import { CommonModule } from '@angular/common';
 import { User, UsersResponse, UsersService } from '@adbox/shared/data-access';
 
 @Component({
-  selector: 'adbox-users-table',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './users.table.html',
-  styles: `
+    selector: 'adbox-users-table',
+    imports: [CommonModule],
+    templateUrl: './users.table.html',
+    styles: `
     :host {
       display: block;
     }
-  `,
+  `
 })
 export class UsersTable implements OnInit {
   private usersService = inject(UsersService);

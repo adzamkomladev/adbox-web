@@ -4,11 +4,10 @@ import { UsersService, User, UsersResponse } from '@adbox/shared/data-access';
 import { KycFilter } from "../filters/kyc.filter";
 
 @Component({
-  selector: 'adbox-kyc-table',
-  standalone: true,
-  imports: [CommonModule, KycFilter],
-  templateUrl: './kyc.table.html',
-  styles: `:host { display: block; }`,
+    selector: 'adbox-kyc-table',
+    imports: [CommonModule, KycFilter],
+    templateUrl: './kyc.table.html',
+    styles: `:host { display: block; }`
 })
 export class KycTable implements OnInit {
   private usersService = inject(UsersService);

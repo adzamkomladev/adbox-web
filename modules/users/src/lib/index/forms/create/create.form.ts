@@ -9,11 +9,10 @@ import { AssetsService, RolesService, UsersService } from '@adbox/shared/data-ac
 import { CreateFormModel } from '../../models/create.form.model';
 
 @Component({
-  selector: 'adbox-create-user-form',
-  standalone: true,
-  templateUrl: './create.form.html',
-  styles: ``,
-  imports: [CommonModule, FormsModule]
+    selector: 'adbox-create-user-form',
+    templateUrl: './create.form.html',
+    styles: ``,
+    imports: [CommonModule, FormsModule]
 })
 export class CreateForm {
   private assetsService = inject(AssetsService);

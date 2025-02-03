@@ -58,5 +58,6 @@
     }
   },
   "defaultProject": "adbox",
-  "nxCloudAccessToken": "M2QwNWNlN2EtMDdiNC00NjhhLTlkMGItNzgwNjJlMjYzZDZhfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "M2QwNWNlN2EtMDdiNC00NjhhLTlkMGItNzgwNjJlMjYzZDZhfHJlYWQtd3JpdGU=",
+  "useLegacyCache": true
 }
